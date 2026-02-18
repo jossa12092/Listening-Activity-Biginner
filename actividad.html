@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Listening Practice - Verb To Be</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    padding:30px;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+    line-height:1.8;
+}
+
+h2{
+    text-align:center;
+}
+
+select, input{
+    padding:5px;
+    font-size:15px;
+}
+
+.correct{
+    border:2px solid green;
+}
+
+.incorrect{
+    border:2px solid red;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:20px;
+    font-size:16px;
+    background:#2c7be5;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Conversation 1 - Select the correct option</h2>
+
+<p><b>Man:</b> Hello! 
+<select onchange="lock(this,'Are')">
+<option value="">___</option>
+<option>Am</option>
+<option>Are</option>
+<option>Is</option>
+</select>
+you a new 
+<select onchange="lock(this,'student')">
+<option value="">___</option>
+<option>student</option>
+<option>teacher</option>
+<option>doctor</option>
+</select>?</p>
+
+<p><b>Woman:</b> Yes, I 
+<select onchange="lock(this,'am')">
+<option value="">___</option>
+<option>am</option>
+<option>is</option>
+<option>are</option>
+</select>. Today 
+<select onchange="lock(this,'is')">
+<option value="">___</option>
+<option>is</option>
+<option>am</option>
+<option>are</option>
+</select> my first 
+<select onchange="lock(this,'day')">
+<option value="">___</option>
+<option>day</option>
+<option>class</option>
+<option>school</option>
+</select>.</p>
+
+<p><b>Man:</b> Well, 
+<select onchange="lock(this,'welcome')">
+<option value="">___</option>
+<option>welcome</option>
+<option>goodbye</option>
+<option>hello</option>
+</select>. My name 
+<select onchange="lock(this,'is')">
+<option value="">___</option>
+<option>is</option>
+<option>am</option>
+<option>are</option>
+</select> Tony.</p>
+
+<p><b>Woman:</b> Hi, Tony. I’m Beth.</p>
+
+<p><b>Man:</b> 
+<select onchange="lock(this,'Are')">
+<option value="">___</option>
+<option>Are</option>
+<option>Is</option>
+<option>Am</option>
+</select>
+you 
+<select onchange="lock(this,'new')">
+<option value="">___</option>
+<option>new</option>
+<option>old</option>
+<option>happy</option>
+</select> in town?</p>
+
+<p><b>Woman:</b> Yes, I’m from 
+<select onchange="lock(this,'New York')">
+<option value="">___</option>
+<option>New York</option>
+<option>London</option>
+<option>Paris</option>
+</select>.</p>
+
+<p><b>Man:</b> Wow! The 
+<select onchange="lock(this,'Big')">
+<option value="">___</option>
+<option>Big</option>
+<option>Small</option>
+<option>Old</option>
+</select> City!</p>
+
+<p><b>Woman:</b> 
+<select onchange="lock(this,'Are')">
+<option value="">___</option>
+<option>Are</option>
+<option>Is</option>
+<option>Am</option>
+</select>
+you from around 
+<select onchange="lock(this,'here')">
+<option value="">___</option>
+<option>here</option>
+<option>there</option>
+<option>town</option>
+</select>?</p>
+
+<p><b>Man:</b> Yes, I am.</p>
+
+<p><b>Woman:</b> That is 
+<select onchange="lock(this,'cool')">
+<option value="">___</option>
+<option>cool</option>
+<option>bad</option>
+<option>sad</option>
+</select>. Well, it is 
+<select onchange="lock(this,'nice')">
+<option value="">___</option>
+<option>nice</option>
+<option>big</option>
+<option>old</option>
+</select> to meet you.</p>
+
+<p><b>Man:</b> Nice to meet you, too.</p>
+
+<hr>
+
+<h2>Conversation 2 - Write the missing word</h2>
+
+<p><b>Man:</b> Hey Beth, how 
+<input type="text" data-answer="is"> your first day?</p>
+
+<p><b>Woman:</b> It is really 
+<input type="text" data-answer="good">. This 
+<input type="text" data-answer="school"> is great!</p>
+
+<p><b>Man:</b> How 
+<input type="text" data-answer="are"> your 
+<input type="text" data-answer="classes">?</p>
+
+<p><b>Woman:</b> They are 
+<input type="text" data-answer="fun">! My teachers are so nice.</p>
+
+<p><b>Man:</b> Who 
+<input type="text" data-answer="are"> your teachers?</p>
+
+<p><b>Woman:</b> My English teacher 
+<input type="text" data-answer="is"> Mr. Wong.</p>
+
+<p><b>Man:</b> Oh, he 
+<input type="text" data-answer="is"> really nice.</p>
+
+<p><b>Woman:</b> Yes, he is. My Spanish teacher 
+<input type="text" data-answer="is"> Mrs. Garcia.</p>
+
+<p><b>Man:</b> Oh, she 
+<input type="text" data-answer="is"> really nice, too.</p>
+
+<p><b>Woman:</b> Yes, her class is a lot of fun!</p>
+
+<br>
+<button onclick="grade()">Submit</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+<script>
+
+let score = 0;
+let total = 23; 
+
+function lock(element, correct){
+    if(element.disabled) return;
+
+    if(element.value === correct){
+        element.classList.add("correct");
+        score++;
+    }else{
+        element.classList.add("incorrect");
+    }
+
+    element.disabled = true;
+}
+
+function grade(){
+
+    let inputs = document.querySelectorAll("input");
+
+    inputs.forEach(input=>{
+        if(input.disabled) return;
+
+        let answer = input.value.trim().toLowerCase();
+        let correct = input.dataset.answer.toLowerCase();
+
+        if(answer === correct){
+            input.classList.add("correct");
+            score++;
+        }else{
+            input.classList.add("incorrect");
+        }
+
+        input.disabled = true;
+    });
+
+    let percentage = score / total;
+    let finalGrade = (percentage * 4) + 1;
+    finalGrade = finalGrade.toFixed(1);
+
+    document.getElementById("result").innerHTML =
+    "Correct Answers: " + score + " / " + total +
+    "<br>Final Grade (1.0 - 5.0): " + finalGrade;
+}
+
+</script>
+
+</body>
+</html>
